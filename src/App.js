@@ -1,12 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-import React from 'react';
+import React, { Component } from "react";
+import "./App.css";
+import ScrollList from "./ScrollList";
 
-function App() {
-  return (
-    <div className="App">
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  list = new Array(124).fill('item');
+
+  render() {
+    return <div ref={this.listRef} className="App">
+      <ScrollList list={list} />
+    </div>;
+  }
 }
 
 export default App;
