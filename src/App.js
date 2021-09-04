@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-import ScrollList from "./ScrollList";
+import Test1 from "./Test1";
+import Test2 from "./Test2";
 
 class App extends Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class App extends Component {
 
   render() {
     return <div ref={this.listRef} className="App">
-      <ScrollList list={list} />
+      {/* <Test1 arg={77} /> */}
+      <Test2 arg={77} />
     </div>;
   }
 }
