@@ -1,6 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import "./App.css";
 
 class App extends Component {
   constructor(props) {
@@ -8,14 +7,11 @@ class App extends Component {
 
     this.state = {
       num: 0,
-    }
+    };
   }
 
   render() {
-    return (
-      <div className="App">
-      </div>
-    );
+    return <div className="App"></div>;
   }
 }
 
