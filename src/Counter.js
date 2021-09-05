@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
 
-const ErrorComponent = () => <div>{props.ignore}</div>;
+const ErrorComponent = () => <div>
+  {/* {props.ignore} */}
+  </div>;
 
 class Counter extends Component {
   constructor(props) {
@@ -43,7 +45,8 @@ class Counter extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     console.log(nextProps.ignoreProp);
     console.log(this.props.ignoreProp);
-    if (nextProps.ignoreProp &&
+    if (
+      nextProps.ignoreProp &&
       this.props.ignoreProp !== nextProps.ignoreProp
     ) {
       console.log("Should Component Update - DO NOT RENDER");
@@ -54,7 +57,7 @@ class Counter extends Component {
   }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
-    console.log('Get SNAPSHOT Before Update');
+    console.log("Get SNAPSHOT Before Update");
     return null;
   }
 
@@ -71,15 +74,15 @@ class Counter extends Component {
   componentDidCatch(error, info) {
     console.log("Component Did Catch Error");
     console.log(error + "\n" + info);
-    this.setState({error, info});
+    this.setState({ error, info });
     console.log(this.state);
     console.log("Changing state of error: " + this.state.error);
   }
 
   render() {
     console.log("Render");
-    console.log(this.state.error);
-    if (this.props.showErrorTab && this.state.error.message) {
+    if (this.props.showErrorTab) {
+      //if (this.props.showErrorTab && this.state.error.message) {
       console.log(this.state);
       return <div>We have encountered an error! {this.state.error}</div>;
     }

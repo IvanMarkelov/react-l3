@@ -8,7 +8,7 @@ export default class App extends Component {
       toggle: true,
       ignoreProp: 0,
       seed: 40,
-      showErrorTab: true,
+      showErrorTab: false,
     };
   }
 
