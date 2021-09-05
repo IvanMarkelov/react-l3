@@ -1,27 +1,46 @@
-import Clock from "./Clock";
+import Article from "./Article";
 import React, { Component, useState } from "react";
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      toggle: true,
+      reverted: true,
+      articles: [
+        { title: "Article 1" },
+        { title: "Article 2" },
+        { title: "Article 3" },
+        { title: "Article 4" },
+      ],
     };
   }
 
-  toggleClock = () => {
+  revertComponent = () => {
     this.setState({
-      toggle: !this.state.toggle,
+      reverted: !this.state.reverted,
     });
+  };
+
+  populateList = (isReverse) => {
+    let articles = this.state.articles;
+   //let articles = (isReverse) ? this.state.articles.reverse() : this.state.articles;
+    this.state.articles.map((article, index) => (
+      <li key={article.title}>
+        <Article title={article.title} defaultOpen={index === 0} />
+      </li>
+    ));
   };
 
   render() {
     return (
       <div>
-        {this.state.toggle && <Clock />}
-        <button onClick={this.toggleClock}>
-          {this.state.toggle ? "Turn off the clock" : "Turn on the clock"}
-        </button>
+        <button onClick={this.revertComponent}>Revert</button>
+        <ul>
+          {this.populateList(true)}
+          {/* {this.state.reverted
+            ? this.populateList(this.state.articles.reverse())
+            : this.populateList(this.state.articles)} */}
+        </ul>
       </div>
     );
   }
