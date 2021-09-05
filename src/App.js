@@ -1,4 +1,4 @@
-import Counter from "./Counter";
+import Clock from "./Clock";
 import React, { Component, useState } from "react";
 
 export default class App extends Component {
@@ -6,45 +6,22 @@ export default class App extends Component {
     super(props);
     this.state = {
       toggle: true,
-      ignoreProp: 0,
-      seed: 40,
-      showErrorTab: false,
     };
   }
 
-  toggleApp = () => {
+  toggleClock = () => {
     this.setState({
       toggle: !this.state.toggle,
-    });
-  };
-
-  ignoreProp = () => {
-    this.setState({
-      ignoreProp: Math.random(),
-    });
-  };
-
-  generateSeed = () => {
-    this.setState({
-      seed: parseInt(Math.random() * 100),
-    });
-  };
-
-  showErrorTab = () => {
-    this.setState({
-      showErrorTab: !this.state.showErrorTab
     });
   };
 
   render() {
     return (
       <div>
-        {this.state.toggle ? <Counter showErrorTab={this.state.showErrorTab} seed={this.state.seed} ignoreProp={this.state.ignoreProp} /> : null}
-        {/* {toggle && <Counter />} */}
-        <button onClick={this.toggleApp}>Toggle App</button>
-        <button onClick={this.ignoreProp}>Ignore Prop</button>
-        <button onClick={this.generateSeed}>Generate Seed</button>
-        <button onClick={this.showErrorTab}>Show Error</button>
+        {this.state.toggle && <Clock />}
+        <button onClick={this.toggleClock}>
+          {this.state.toggle ? "Turn off the clock" : "Turn on the clock"}
+        </button>
       </div>
     );
   }
