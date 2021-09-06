@@ -7,13 +7,20 @@ class App extends Component {
     super(props);
 
     this.state = {
-      num: 0,
+      disableCcomponent: false,
     };
+  }
+
+  handleCcomponent = () => {
+    this.setState({
+      disableCcomponent: !this.state.disableCcomponent,
+    })
   }
 
   render() {
     return <div className="App">
-      <Ccomponent />
+    {!this.state.disableCcomponent &&  <Ccomponent />}
+    <button onClick={this.handleCcomponent}>{this.state.disableCcomponent ? `Монтировать` : `Демонтировать`} Ccomponent</button>
     </div>;
   }
 }

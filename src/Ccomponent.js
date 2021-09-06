@@ -7,12 +7,16 @@ export default class Ccomponent extends Component {
 
     this.state = {
       class: "off",
-      label: "Press",
+      label: "Обновить компонент",
     };
 
     this.press = this.press.bind(this);
 
     console.log("Constructor");
+  }
+
+  static getDerivedStateFromProps() {
+    console.log("Get Derived State From Props");
   }
 
   componentDidMount() {
