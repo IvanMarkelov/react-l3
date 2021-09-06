@@ -5,7 +5,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      reverted: true,
+      reverted: false,
       articles: [
         { title: "Article 1" },
         { title: "Article 2" },
@@ -21,11 +21,16 @@ export default class App extends Component {
     });
   };
 
-  populateList = (isReverse) => {
-    let articles = this.state.articles;
-   //let articles = (isReverse) ? this.state.articles.reverse() : this.state.articles;
-    this.state.articles.map((article, index) => (
+  populateList = () => {
+    let articles = null;
+    if (!this.state.reverted) {
+      articles = this.state.articles;
+    } else {
+      articles = this.state.articles.reverse();
+    }
+    return articles.map((article, index) => (
       <li key={article.title}>
+        {console.log(article.title + " " + index + " " + (index === 0))}
         <Article title={article.title} defaultOpen={index === 0} />
       </li>
     ));
@@ -35,12 +40,7 @@ export default class App extends Component {
     return (
       <div>
         <button onClick={this.revertComponent}>Revert</button>
-        <ul>
-          {this.populateList(true)}
-          {/* {this.state.reverted
-            ? this.populateList(this.state.articles.reverse())
-            : this.populateList(this.state.articles)} */}
-        </ul>
+        <ul>{this.populateList()}</ul>
       </div>
     );
   }
